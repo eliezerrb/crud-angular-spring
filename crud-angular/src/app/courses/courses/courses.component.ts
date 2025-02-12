@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class CoursesComponent implements OnInit {
 
   // por padrão tem que tipar, usar o any somente se não souber o tipo, ex: course: any[] = [];
-  courses: Observable<Course[]>;
+  courses$: Observable<Course[]>;
   displayedColumns = ['name','category'];
 
   // coursesService: CoursesService;
@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
 
     // fazendo dessa forma quando não faz a injeção de dependencia no parametro do construtor
     // this.coursesService = new CoursesService();
-    this.courses = this.coursesService.list();
+    this.courses$ = this.coursesService.list();
   }
 
   ngOnInit() {
