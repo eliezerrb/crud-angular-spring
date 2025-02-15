@@ -1,7 +1,8 @@
 import { CoursesService } from './../services/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses',
@@ -22,7 +23,12 @@ export class CoursesComponent implements OnInit {
 
     // fazendo dessa forma quando não faz a injeção de dependencia no parametro do construtor
     // this.coursesService = new CoursesService();
-    this.courses$ = this.coursesService.list();
+    this.courses$ = this.coursesService.list()
+    .pipe(
+      catchError(error => {
+        return of([])
+      })
+    );
   }
 
   ngOnInit() {

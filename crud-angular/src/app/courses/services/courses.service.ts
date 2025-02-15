@@ -11,7 +11,7 @@ export class CoursesService {
 
   // readonly previnir que eu faça modificações nesse valor
   // caminho do endpoint
-  private readonly API = '/assets/couses.json'
+  private readonly API = '/assetss/couses.json'
 
   // private httpClient: HttpClient injeção de dependencia no contrutor para termos a instancia da httpClient
   constructor(private httpClient: HttpClient) { }
